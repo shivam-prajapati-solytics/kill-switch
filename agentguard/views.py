@@ -63,7 +63,6 @@ def agent_query(request):
     except PermissionError:
         return JsonResponse({"status": "killed", "run_id": run_id,
                                 "error": "Agent execution is disabled."}, status=503)
-    
     except (SecurityStateUnavailable, RedisError):
         audit("SECURITY_STATE_UNAVAILABLE", {"run_id": run_id})
         return JsonResponse({"status": "blocked",
