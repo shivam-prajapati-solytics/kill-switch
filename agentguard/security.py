@@ -69,5 +69,6 @@ def detect_pii(text):
     ]
     return any(re.search(p, text, flags=re.IGNORECASE) for p in patterns)
 
+
 def new_run_id():
     return str(uuid.uuid4())
